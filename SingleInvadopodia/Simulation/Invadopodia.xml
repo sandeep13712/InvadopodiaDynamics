@@ -1,0 +1,82 @@
+<CompuCell3D Revision="20150808" Version="3.7.4">
+   
+   <Potts>
+       <Dimensions x="25" y="25" z="25"/>
+      <Steps>3600</Steps>
+      <Temperature>0.01</Temperature>
+      <NeighborOrder>1</NeighborOrder>
+   </Potts>
+   
+   
+   <Plugin Name="CellType">
+      <CellType Freeze="" TypeId="0" TypeName="Medium"/>
+      <CellType TypeId="1" Freeze="" TypeName="Invadopodia"/>
+   </Plugin>
+   
+   <Plugin Name="Volume">
+   
+</Plugin>
+
+   <Plugin Name="PixelTracker">
+   </Plugin>
+   
+   <Plugin Name="BoundaryPixelTracker">
+      <NeighborOrder>1</NeighborOrder>
+   </Plugin>
+   
+   <Steppable Type="DiffusionSolverFE">
+      <DiffusionField Name="MMP">
+         <DiffusionData>
+            <FieldName>MMP</FieldName>
+            <GlobalDiffusionConstant>1.098</GlobalDiffusionConstant> 
+<!--             <ExtraTimesPerMCS>10</ExtraTimesPerMCS> -->
+            <GlobalDecayConstant>0.002</GlobalDecayConstant>
+            <DoNotDiffuseTo>Invadopodia</DoNotDiffuseTo>
+         </DiffusionData>
+         <BoundaryConditions>
+            <Plane Axis="X">
+               <ConstantValue PlanePosition="Min" Value="0.0"/>
+               <ConstantValue PlanePosition="Max" Value="0.0"/>
+            </Plane>
+            
+            <Plane Axis="Y">
+               <ConstantDerivative PlanePosition="Min" Value="0.0"/>
+               <ConstantDerivative PlanePosition="Max" Value="0.0"/>
+               
+            </Plane>
+            
+            <Plane Axis="Z">
+               <ConstantDerivative PlanePosition="Min" Value="0.0"/>
+               <ConstantDerivative PlanePosition="Max" Value="0.0"/>
+            </Plane>
+            
+         </BoundaryConditions>
+      </DiffusionField>
+         
+      <DiffusionField Name="Matrix">
+         <DiffusionData>
+            <FieldName>Matrix</FieldName>
+            <GlobalDiffusionConstant>0.0</GlobalDiffusionConstant> 
+            <GlobalDecayConstant>0.0000</GlobalDecayConstant>
+         </DiffusionData>
+         <BoundaryConditions>
+            <Plane Axis="X">
+               <ConstantValue PlanePosition="Min" Value="0.0"/>
+               <ConstantValue PlanePosition="Max" Value="0.0"/>
+            </Plane>
+            
+            <Plane Axis="Y">
+               <ConstantDerivative PlanePosition="Min" Value="0.0"/>
+               <ConstantDerivative PlanePosition="Max" Value="0.0"/>
+            </Plane>
+            
+            <Plane Axis="Z">
+               <ConstantDerivative PlanePosition="Min" Value="0.0"/>
+               <ConstantDerivative PlanePosition="Max" Value="0.0"/>
+            </Plane>
+            
+         </BoundaryConditions>
+      </DiffusionField>
+         </Steppable>
+
+</CompuCell3D>
