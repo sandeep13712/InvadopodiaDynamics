@@ -1,4 +1,4 @@
-# InvadopodiaDynamics
+# Invadopodia Dynamics
 
 This repository contains code files written for studying the dynamics of Invadopodia mediated ECM degradation. The initial verison of the code was generated for the following publication:
 
